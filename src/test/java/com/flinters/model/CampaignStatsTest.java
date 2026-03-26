@@ -1,0 +1,40 @@
+package com.flinters.model;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CampaignStatsTest {
+
+    @Test
+    void shouldCalculateCtrCorrectly() {
+        CampaignStats s = new CampaignStats();
+        s.add(100, 10, 20.0, 2);
+
+        assertEquals(0.1, s.ctr());
+    }
+
+    @Test
+    void shouldReturnZeroCtrWhenNoImpression() {
+        CampaignStats s = new CampaignStats();
+        s.add(0, 10, 20.0, 2);
+
+        assertEquals(0.0, s.ctr());
+    }
+
+    @Test
+    void shouldCalculateCpaCorrectly() {
+        CampaignStats s = new CampaignStats();
+        s.add(100, 10, 20.0, 2);
+
+        assertEquals(10.0, s.cpa());
+    }
+
+    @Test
+    void shouldReturnNullCpaWhenNoConversion() {
+        CampaignStats s = new CampaignStats();
+        s.add(100, 10, 20.0, 0);
+
+        assertNull(s.cpa());
+    }
+}
