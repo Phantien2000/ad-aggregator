@@ -10,7 +10,7 @@ public class AggregationService {
         Map<String, CampaignStats> map = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(file), 1024 * 1024)) {
-            String line = br.readLine(); // skip header
+            String line;
 
             while ((line = br.readLine()) != null) {
                 try {

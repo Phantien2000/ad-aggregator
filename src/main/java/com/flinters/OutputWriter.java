@@ -19,7 +19,7 @@ public class OutputWriter {
 
         List<Map.Entry<String, CampaignStats>> topCpa = list.stream()
             .filter(e -> e.getValue().conversions > 0)
-            .sorted((a, b) -> Double.compare(a.getValue().cpa(), b.getValue().cpa()))
+            .sorted(Comparator.comparingDouble(a -> a.getValue().cpa()))
             .limit(10)
             .collect(Collectors.toList());
 
@@ -36,10 +36,10 @@ public class OutputWriter {
                 bw.write(e.getKey() + "," +
                         s.impressions + "," +
                         s.clicks + "," +
-                        s.spend + "," +
+                        String.format("%.2f", s.spend) + "," +
                         s.conversions + "," +
-                        s.ctr() + "," +
-                        (s.cpa() == null ? "" : s.cpa()) +
+                        String.format("%.4f", s.ctr()) + "," +
+                        (s.cpa() == null ? "" : String.format("%.2f", s.cpa())) +
                         "\n");
             }
         }
