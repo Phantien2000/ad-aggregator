@@ -1,38 +1,22 @@
-
 package com.flinters;
 
-import java.io.File;
 import java.util.Map;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
-        String input = null;
-        String output = null;
+        CliArgs cli = CliArgs.parse(args);
 
-        for (int i = 0; i < args.length; i++) {
-            if ("--input".equals(args[i])) input = args[++i];
-            if ("--output".equals(args[i])) output = args[++i];
-        }
-
-        if (input == null || output == null) {
-            System.err.println("Usage: java -jar app.jar --input <file> --output <dir>");
-            return;
-        }
-
-        long start = System.currentTimeMillis();
+        PerformanceMonitor monitor = new PerformanceMonitor();
+        monitor.start();
 
         AggregationService service = new AggregationService();
-        Map<String, CampaignStats> map = service.process(input);
+        Map<String, CampaignStats> map = service.process(cli.getInput());
 
         OutputWriter writer = new OutputWriter();
-        writer.writeResults(map, output);
+        writer.writeResults(map, cli.getOutput());
 
-        long end = System.currentTimeMillis();
-
-        Runtime rt = Runtime.getRuntime();
-        long used = (rt.totalMemory() - rt.freeMemory()) / (1024 * 1024);
-
-        System.out.println("Time(ms): " + (end - start));
-        System.out.println("Memory(MB): " + used);
+        monitor.stop();
+        monitor.printStats();
     }
 }
