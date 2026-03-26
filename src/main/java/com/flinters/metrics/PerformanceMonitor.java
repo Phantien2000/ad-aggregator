@@ -1,4 +1,4 @@
-package com.flinters;
+package com.flinters.metrics;
 
 public class PerformanceMonitor {
 

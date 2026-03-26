@@ -1,5 +1,5 @@
 
-package com.flinters;
+package com.flinters.model;
 
 public class CampaignStats {
     public long impressions;

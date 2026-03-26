@@ -1,5 +1,7 @@
 
-package com.flinters;
+package com.flinters.io;
+
+import com.flinters.model.CampaignStats;
 
 import java.io.*;
 import java.util.*;

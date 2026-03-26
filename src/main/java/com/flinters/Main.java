@@ -1,5 +1,11 @@
 package com.flinters;
 
+import com.flinters.cli.CliArgs;
+import com.flinters.io.OutputWriter;
+import com.flinters.metrics.PerformanceMonitor;
+import com.flinters.model.CampaignStats;
+import com.flinters.service.AggregationService;
+
 import java.util.Map;
 
 public class Main {
