@@ -11,7 +11,7 @@ class CampaignStatsTest {
         CampaignStats s = new CampaignStats();
         s.add(100, 10, 20.0, 2);
 
-        assertEquals(0.1, s.ctr());
+        assertEquals(0.1, s.getCtr());
     }
 
     @Test
@@ -19,7 +19,7 @@ class CampaignStatsTest {
         CampaignStats s = new CampaignStats();
         s.add(0, 10, 20.0, 2);
 
-        assertEquals(0.0, s.ctr());
+        assertEquals(0.0, s.getCtr());
     }
 
     @Test
@@ -27,7 +27,7 @@ class CampaignStatsTest {
         CampaignStats s = new CampaignStats();
         s.add(100, 10, 20.0, 2);
 
-        assertEquals(10.0, s.cpa());
+        assertEquals(10.0, s.getCpa());
     }
 
     @Test
@@ -35,6 +35,6 @@ class CampaignStatsTest {
         CampaignStats s = new CampaignStats();
         s.add(100, 10, 20.0, 0);
 
-        assertNull(s.cpa());
+        assertEquals(0.0, s.getCpa());
     }
 }

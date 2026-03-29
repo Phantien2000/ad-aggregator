@@ -26,9 +26,9 @@ class AggregationServiceTest {
 
         CampaignStats stats = result.get("CMP1");
 
-        assertEquals(300, stats.impressions);
-        assertEquals(30, stats.clicks);
-        assertEquals(60.0, stats.spend);
-        assertEquals(6, stats.conversions);
+        assertEquals(300, stats.getImpressions());
+        assertEquals(30, stats.getClicks());
+        assertEquals(60.0, stats.getSpend());
+        assertEquals(6, stats.getConversions());
     }
 }

@@ -33,23 +33,23 @@ Output:
 
 ## 📚 Libraries Used
 
-* Java Standard Library only:
-
-  * BufferedReader
+* Java Standard Library + lightweight CSV parsing library:
+  * BufferedReader (used internally by CSVReader for efficient IO)
   * BufferedWriter
   * HashMap
   * Runtime API
+  * OpenCSV (CSVReader for correct CSV parsing)
 
 ---
 
 ## ⏱️ Processing Time (1GB file)
 
-* ~7.5 seconds (depending on hardware)
+* ~11.5 seconds (depending on hardware)
 
 ---
 
 ## 🧠 Peak Memory Usage
 
-* ~200–250 MB
+* ~260 MB
 * Measured using a background monitoring thread
 
